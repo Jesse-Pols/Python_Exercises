@@ -1,6 +1,5 @@
 import sys
 import datetime
-import time
 
 def Menu():
     i = int(input('Kies een optie:\n1. Nieuwe naam toevoegen\n2. Huidige lijst inzien\n3. Bestand legen\n4. Sluiten\n'))
