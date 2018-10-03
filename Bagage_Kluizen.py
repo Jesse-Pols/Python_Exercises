@@ -36,7 +36,7 @@ def toon_aantal_kluizen_vrij():
 
 def nieuwe_kluis(kluis_code=None):
     if sum(1 for line in open("kluizen.txt")) < 12:
-        locker_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+        locker_list = list(range(1,13))
         with open("kluizen.txt", "r") as f:
             for x in f.readlines():
                 locker_nr = x.split(';')[0]
@@ -120,18 +120,18 @@ print(tester(2, "", "sample") == "Je hebt kluis 1 gekregen.")
 print(tester(3, "1", "sample") == "Je hebt toegang tot je kluis.")
 print(tester(3, "1", "sampel") == "We hebben geen kluis kunnen vinden met dit nummer en deze code.")
 print(tester(3, "2", "sample") == "We hebben geen kluis kunnen vinden met dit nummer en deze code.")
-print(tester(1, "", "")        == "Er zijn nog 11 kluizen vrij.")
+print(tester(1, "", "") == "Er zijn nog 11 kluizen vrij.")
 print(tester(2, "", "s@mple2.0") == "Je hebt kluis 2 gekregen.")
 # kluizen.txt
 # 1;sample
 # 2;sample2
 
-print(tester(1, "", "")        == "Er zijn nog 10 kluizen vrij.")
+print(tester(1, "", "") == "Er zijn nog 10 kluizen vrij.")
 print(tester(4, "1", "sample") == "De kluis is geleegd en beschikbaar voor anderen.")
 # kluizen.txt
 # 2;sample2
 
-print(tester(1, "", "")         == "Er zijn nog 11 kluizen vrij.")
+print(tester(1, "", "") == "Er zijn nog 11 kluizen vrij.")
 print(tester(4, "2", "s@mple2.0") == "De kluis is geleegd en beschikbaar voor anderen.")
 # kluizen.txt
 
