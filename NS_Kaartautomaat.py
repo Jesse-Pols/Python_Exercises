@@ -50,10 +50,18 @@ def Run(stations, tester=False, beginstation = None, eindstation = None):
     beginstation = inlezen_beginstation(stations, tester, beginstation)
     if beginstation == 'Beginstation bestaat niet.':
         return beginstation
+    if beginstation == 'Maastricht':
+        print('Dit is het eindstation, u kunt niet verder reizen.')
+        return
+
     eindstation = inlezen_eindstation(stations, tester, beginstation, eindstation)
     if eindstation == 'Eindstation bestaat niet.' or eindstation == 'Eindstation ligt voor beginstation.':
         return eindstation
-    omgeroepen_data = omroepen_reis(stations, tester, beginstation, eindstation)
+    if eindstation != beginstation:
+        omgeroepen_data = omroepen_reis (stations, tester, beginstation, eindstation)
+    else:
+        print("Het beginstation is het zelfde als het eindstation.\nKaartje is € 0,-.")
+        return
 
     return '{} = {}e station, {} = {}e station, afstand = {}, kosten = €{},-.'.format(beginstation, omgeroepen_data[0], eindstation, omgeroepen_data[1], omgeroepen_data[2], omgeroepen_data[3])
 
